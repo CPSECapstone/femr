@@ -316,7 +316,6 @@ public class UserService implements IUserService {
 
     private boolean emailValidation(String email) {
         String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
-        System.out.println(email.matches(regex));
         return email.matches(regex);
     }
 }
