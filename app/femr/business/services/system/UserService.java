@@ -98,6 +98,11 @@ public class UserService implements IUserService {
                 return response;
             }
 
+            if (!emailValidation(user.getEmail())) {
+                response.addError("", "Enter a valid email address.");
+                return response;
+            }
+
             newUser = userRepository.createUser(newUser);
             response.setResponseObject(itemModelMapper.createUserItem(newUser));
         } catch (Exception ex) {
@@ -307,5 +312,11 @@ public class UserService implements IUserService {
     private boolean userExistsWithEmail(String email) {
         IUser existingUser = retrieveByEmail(email);
         return existingUser != null;
+    }
+
+    private boolean emailValidation(String email) {
+        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        System.out.println(email.matches(regex));
+        return email.matches(regex);
     }
 }

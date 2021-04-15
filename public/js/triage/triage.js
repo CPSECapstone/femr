@@ -434,10 +434,8 @@ var ageClassificationAutoCalculateFeature = {
             case (patientAge <= 64):
                 document.getElementById("adult").checked = true;
                 break;
-            case (patientAge <= 200):
-                document.getElementById("elder").checked = true;
-                break;
             default:
+                document.getElementById("elder").checked = true;
                 break;
         }
         return;
